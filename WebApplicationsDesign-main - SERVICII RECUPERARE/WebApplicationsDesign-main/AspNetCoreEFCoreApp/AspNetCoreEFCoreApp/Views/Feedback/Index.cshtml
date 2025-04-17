@@ -1,0 +1,92 @@
+﻿@model IEnumerable<AspNetCoreEFCoreApp.Models.Feedback>
+
+@{
+    ViewData["Title"] = "Lista Feedback-uri";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .feedback-table {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+            .feedback-table th {
+                background-color: #28a745;
+                color: white;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            .feedback-table td {
+                vertical-align: middle;
+                text-align: center;
+            }
+
+        .feedback-actions a {
+            margin: 0 4px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+            .feedback-actions a:hover {
+                opacity: 0.8;
+            }
+
+        .btn-create {
+            margin-bottom: 20px;
+        }
+
+        .photo-url {
+            word-break: break-all;
+            font-size: 0.85rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h2 class="mb-4 text-success">Feedback-uri din sistem</h2>
+
+        <div class="text-end mb-3">
+            <a asp-action="Create" class="btn btn-success btn-create">➕ Adaugă feedback nou</a>
+        </div>
+
+        <table class="table feedback-table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().Name_Full)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Photo)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Message)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Users)</th>
+                    <th>Acțiuni</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name_Full</td>
+                        <td class="photo-url">@item.Photo</td>
+                        <td>@item.Message</td>
+                        <td>@item.Users?.CNP</td>
+                        <td class="feedback-actions">
+                            <a asp-action="Details" asp-route-id="@item.Id_Feedback" class="text-info">🔍</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id_Feedback" class="text-danger">🗑️</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

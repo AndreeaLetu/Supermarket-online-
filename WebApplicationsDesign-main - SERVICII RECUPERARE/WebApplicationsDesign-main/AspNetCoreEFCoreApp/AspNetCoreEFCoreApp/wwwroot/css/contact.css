@@ -1,0 +1,166 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #c8efd1;
+}
+
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+    .wrapper h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #332902;
+    }
+
+    .wrapper .input_field {
+        margin-bottom: 15px;
+    }
+
+        .wrapper .input_field input[type="text"],
+        .wrapper textarea,
+        .wrapper select {
+            border: 1px solid #e0e0e0;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+    .wrapper .btn input[type="submit"] {
+        border: none;
+        margin-top: 15px;
+        padding: 12px;
+        text-align: center;
+        width: 100%;
+        background: #4ccd6a;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+        .wrapper .btn input[type="submit"]:hover {
+            background: #3ab55d;
+        }
+
+#error_message {
+    margin-bottom: 20px;
+    background: #fe8b8e;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+}
+
+.btn {
+    border-radius: 25px;
+    color: #fff;
+    margin-top: 18px;
+    padding: 12px 30px;
+    background-color: #4ccd6a;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    transition: background 0.3s ease-in-out;
+}
+
+    .btn:hover {
+        background-color: #3ab55d;
+    }
+
+button {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background: green;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    font-weight: bold;
+}
+
+    button:hover {
+        background: darkgreen;
+    }
+
+.required::after {
+    content: " *";
+    color: red;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .container input,
+    .container select,
+    .container textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .container .note {
+        font-size: 14px;
+        color: #777;
+        margin-top: 10px;
+        text-align: center;
+    }
+/* Stil pentru butonul de trimitere */
+button {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background: green;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+    button:hover {
+        background: darkgreen;
+    }
+
+.required::after {
+    content: " *";
+    color: red;
+}
+}

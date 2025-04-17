@@ -1,0 +1,33 @@
+﻿@model AspNetCoreEFCoreApp.Models.PromoPackets
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="details-header">
+    <h1>Detalii Pachet Promotional</h1>
+    <a asp-action="Index" class="btn btn-secondary">Înapoi la listă</a>
+</div>
+
+<div class="details-container">
+    <div class="row">
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ProductName)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.ProductName)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Description)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Price_Packet)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Price_Packet)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Photo_Pack)</dt>
+                <dd class="col-sm-9"><img src="@Model.Photo_Pack" alt="Promo Packet Image" class="promo-image" /></dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Type_Pack)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Type_Pack)</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="details-actions">
+        <a asp-action="Edit" asp-route-id="@Model?.Id_Product" class="btn btn-primary">Editează</a>
+        <a asp-action="Index" class="btn btn-secondary">Înapoi la listă</a>
+    </div>
+</div>

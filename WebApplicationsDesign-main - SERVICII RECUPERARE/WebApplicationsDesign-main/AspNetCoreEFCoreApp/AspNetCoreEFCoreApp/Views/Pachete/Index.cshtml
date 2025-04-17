@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AspNetCoreEFCoreApp.Models.PromoPackets>
+
+@{
+    ViewData["Title"] = "Pachete Promotionale Populare";
+}
+
+<div class="promo-header">
+    <h1>Pachete Promotionale Populare</h1>
+    <a asp-action="Create" class="btn green-button">Adauga un pachet nou ...</a>
+</div>
+
+<table class="table promo-table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Price_Packet)</th>
+            <th>@Html.DisplayNameFor(model => model.Type_Pack)</th>
+            <th>@Html.DisplayNameFor(model => model.Photo_Pack)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.Price_Packet)</td>
+                <td>@Html.DisplayFor(modelItem => item.Type_Pack)</td>
+                <td>
+                    <img src="@item.Photo_Pack" alt="Image" class="promo-image" />
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id_Product" class="btn btn-primary">Editeaza</a>
+                    <a asp-action="Details" asp-route-id="@item.Id_Product" class="btn btn-info">Detalii</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id_Product" class="btn btn-danger">Sterge</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

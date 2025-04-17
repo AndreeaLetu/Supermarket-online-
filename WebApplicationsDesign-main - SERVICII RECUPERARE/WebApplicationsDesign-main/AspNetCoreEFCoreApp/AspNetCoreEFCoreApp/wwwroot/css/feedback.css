@@ -1,0 +1,489 @@
+﻿/* Stilizare pentru butonul de feedback */
+.feedback-button {
+    background-color: #4eb060; /* Verde */
+    color: white;
+    padding: 12px 24px; /* Ușor mai mare pentru un aspect modern */
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 25px; /* Colțuri mai rotunjite */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+    .feedback-button:hover {
+        background-color: #3a8b4e; /* Verde mai închis */
+        transform: scale(1.05); /* Efect de mărire ușoară */
+    }
+
+    .feedback-button:active {
+        background-color: #317f3a; /* Culoare mai închisă la click */
+        transform: scale(0.98); /* Efect de micșorare ușoară */
+    }
+
+/* Stilizare pentru popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    z-index: 1000;
+    text-align: center;
+    width: 300px;
+}
+
+    .popup h3 {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .popup input, .popup textarea {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .popup button {
+        padding: 12px;
+        background: #4eb060; /* Culoare similară cu butonul */
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 15px;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 16px;
+    }
+
+        .popup button:hover {
+            background: #3a8b4e;
+        }
+
+/* Efect pentru overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+
+/* Stilizare pentru containerul feedback-ului */
+.feedback-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Animații de deschidere pentru popup */
+.popup.open {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Efect de fade-in pentru popup */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+.client-box-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding: 30px 0;
+}
+
+.client-box {
+    background: #fff;
+    padding: 20px;
+    width: 300px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+}
+
+.client-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+    .client-profile img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+.feedback-button {
+    background-color: #198754;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+<style >
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 0;
+    margin-top: 30px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.client-box {
+    flex: 0 0 33.3333%;
+    padding: 20px;
+    margin: 10px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+.client-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+    .client-profile img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+.profile-text strong {
+    font-size: 16px;
+    color: #333;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background: #198754;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 5;
+}
+
+    .carousel-nav.left {
+        left: 10px;
+    }
+
+    .carousel-nav.right {
+        right: 10px;
+    }
+
+#clients {
+    padding: 40px 0;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.client-heading h3 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.client-box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.client-box {
+    flex: 0 0 30%;
+    padding: 16px;
+    margin: 10px 0;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: transform 0.2s ease;
+    min-height: 160px;
+}
+
+    .client-box:hover {
+        transform: translateY(-3px);
+    }
+
+.client-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    .client-profile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+.profile-text strong {
+    font-size: 14px;
+    color: #222;
+}
+
+.client-box p {
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+/* Feedback button */
+.feedback-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.feedback-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .feedback-button:hover {
+        background-color: #218838;
+    }
+
+/* Popup styles */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    z-index: 1001;
+    border-radius: 12px;
+    display: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    display: none;
+}
+
+.form-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup input,
+.popup textarea,
+.popup select {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+#clients {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.client-heading h3 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+.client-box-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 0 40px;
+}
+
+.client-box {
+    background-color: #fff;
+    width: 300px;
+    padding: 25px 25px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    text-align: left;
+}
+
+    .client-box:hover {
+        transform: translateY(-5px);
+    }
+
+.client-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+    .client-profile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 12px;
+    }
+
+.profile-text strong {
+    font-size: 16px;
+    color: #222;
+}
+
+.client-box p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+.swiper {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+}
+
+.client-box {
+    width: 300px;
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.client-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+    .client-profile img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+    }
+
+.profile-text strong {
+    font-size: 16px;
+    color: #333;
+}
+
+.client-box p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+}
+.slider-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px auto 0;
+    max-width: 1200px;
+}
+
+    .slider-controls button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        font-size: 1.8rem;
+        padding: 10px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+        .slider-controls button:hover {
+            background-color: #218838;
+        }
+
+.client-box-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.client-slider-wrapper {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.client-slider-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+.client-box {
+    flex: 0 0 calc(100% / 3);
+    box-sizing: border-box;
+    margin: 0 15px;
+}

@@ -1,0 +1,58 @@
+﻿
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="contact.css">
+    <script src="contact.js"></script>
+    
+</head>
+<body>
+   
+
+    <!-- Formular de Contact -->
+    <div class="container">
+        <form id="feedbackForm">
+
+            <label for="last-name" class="required">Nume:</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Introdu numele tău" required>
+
+            <label for="email" class="required">Adresă de email:</label>
+            <input type="email" id="email" name="email" placeholder="Introdu adresa de email" required>
+
+            <label for="details">Subiect:</label>
+            <textarea id="details" name="details" placeholder="Introdu detaliile suplimentare..." style="height:200px"></textarea>
+            
+            <label for="details">Mesaj:</label>
+            <textarea id="details" name="details" placeholder="Introdu detaliile suplimentare..." style="height:200px"></textarea>
+
+            <button type="submit">TRIMITE</button>
+            <p class="note">Câmpurile marcate cu * sunt obligatorii.</p>
+        </form>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28971.309241832033!2d26.097366980663764!3d44.42676738504488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff49a235b9b1%3A0x6f2f3e9a0f3e4e2b!2sBucharest%2C%20Romania!5e0!3m2!1sro!2sro!4v1709567890123!5m2!1sro!2sro"
+                width="300"
+                height="225"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Previne trimiterea reală a formularului
+
+            alert('Formularul a fost trimis cu succes! Mulțumim pentru feedback.');
+
+            // Resetează toate câmpurile formularului
+            event.target.reset();
+        });
+    </script>
+</body>
+</html> 

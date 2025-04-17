@@ -1,0 +1,71 @@
+﻿@model AspNetCoreEFCoreApp.Models.Contact;
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category and Products</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="css" href="category-form.css">
+
+
+</head>
+<body>
+
+    <section id="category">
+
+        <div class="category-heading">
+            <h2>Categorii</h2>
+            <span>All</span>
+        </div>
+
+
+        <div class="category-container">
+
+            <a class="category-box" href="Fruits Category Page HTML.html">
+                <img alt="Fructe si legume" src="https://i.imgur.com/lvk68rp.png">
+                <span>Fructe & <br> Legume</span>
+            </a>
+
+            <a class="category-box" href="Medicine Category Page HTML.html">
+                <img alt="Pastile" src="https://i.imgur.com/4sjlmg3.png">
+                <span>Pastile</span>
+            </a>
+
+            <a class="category-box" href="Baby Care Category Page HTML.html">
+                <img alt="Produse pentru bebelusi" src="https://i.imgur.com/uvd01HH.png">
+                <span>Produse pentru bebelusi</span>
+            </a>
+
+            <a class="category-box" href="Office Category Page HTML.html">
+                <img alt="Produse Scolare" src="https://i.imgur.com/N5a3WUT.png">
+                <span>Produse Scolare</span>
+            </a>
+
+            <a class="category-box" href="Beauty Category Page HTML.html">
+                <img alt="Cosmetice" src="https://i.imgur.com/Bm0yLex.png">
+                <span>Cosmetice</span>
+            </a>
+
+            <a class="category-box" href="Gardening Category Page HTML.html">
+                <img alt="Produse de gradina" src="https://i.imgur.com/AjGulv5.png">
+                <span>Produse de gradina</span>
+            </a>
+        </div>
+    </section>
+    <section id="add-category-section">
+        <h2>Adaugă o categorie nouă</h2>
+        <form action="/Categories/AddCategory" method="post">
+            <label for="Name_Categories">Numele categoriei:</label>
+            <input type="text" id="Name_Categories" name="Name_Categories" required><br>
+
+            <label for="Description">Descrierea categoriei:</label>
+            <textarea id="Description" name="Description" required></textarea><br>
+
+            <button type="submit">Adaugă categorie</button>
+        </form>
+    </section>
+
+
+</body>
+</html>

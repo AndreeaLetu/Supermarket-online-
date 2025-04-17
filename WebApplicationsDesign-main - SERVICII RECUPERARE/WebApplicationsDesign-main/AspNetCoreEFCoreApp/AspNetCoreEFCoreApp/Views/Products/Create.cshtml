@@ -1,0 +1,182 @@
+﻿@model AspNetCoreEFCoreApp.Models.Products
+
+@{
+    ViewData["Title"] = "Adaugă produs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/products.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/form-styled.css" />
+    <script src="https://kit.fontawesome.com/5471644867.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- ✅ Produse populare -->
+    <section id="popular-product">
+        <div class="product-heading">
+            <h3>Produse populare în rândul clienților noștri!</h3>
+        </div>
+
+        <div class="product-container">
+            <div class="product-box">
+                <img src="https://i.imgur.com/vUJ2JKU.png" alt="Mere" />
+                <strong>Mere</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">2.35 RON</span>
+                <a href="#" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Adaugă în coș
+                </a>
+                <a class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+            <div class="product-box">
+                <img alt="chili" src="https://i.imgur.com/rFhSMZN.png">
+                <strong>Chili</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">7.25 RON</span>
+
+                <a href="Shopping Cart HTML.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Adaugă în coș
+                </a>
+
+                <a class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+
+            <div class="product-box">
+                <img alt="apple" src="https://i.imgur.com/sGLggWL.jpg">
+                <strong>Ceapa</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">10.00 RON</span>
+
+                <a href="Shopping Cart HTML.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Adaugă în coș
+                </a>
+
+                <a class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+
+            <div class="product-box">
+                <img alt="apple" src="https://i.imgur.com/WFjH6ui.png">
+                <strong>Cartofi</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">6.00 RON</span>
+
+                <a href="Shopping Cart HTML.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>Adaugă în coș
+                </a>
+
+                <a class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+
+            <div class="product-box">
+                <img alt="apple" src="https://i.imgur.com/XVLuy2J.png">
+                <strong>Usturoi</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">20.00 RON</span>
+
+                <a href="#" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Adaugă în coș
+                </a>
+
+                <a class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+
+            <div class="product-box">
+                <img alt="apple" src="https://i.imgur.com/8l5hDhS.png">
+                <strong>Rosii</strong>
+                <span class="quantity">1 KG</span>
+                <span class="price">9.50 RON</span>
+
+                <a href="Shopping Cart HTML.html" class="cart-btn">
+                    <i class="fas fa-shopping-bag"></i> Adaugă în coș
+                </a>
+
+                <a class="like-btn">
+                    <i class="far fa-heart"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Formular pentru adăugare produs -->
+    <section id="add-product-section">
+        <div class="d-flex" style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 class="form-title">Adaugă un produs nou</h2>
+            <a asp-action="Index"
+               class="btn btn-outline-primary"
+               style="padding: 8px 14px; font-weight: 600; border: 2px solid #007bff; border-radius: 6px; text-decoration: none; color: black;">
+                📦 Vezi toate produsele!
+            </a>
+        </div>
+
+
+        <form asp-action="Create" method="post" enctype="multipart/form-data" class="styled-form">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger summary"></div>
+
+            <div class="form-group">
+                <label asp-for="Name_Product" class="form-label">Numele produsului:</label>
+                <input asp-for="Name_Product" class="form-input" required />
+                <span asp-validation-for="Name_Product" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price_Product" class="form-label">Prețul (RON):</label>
+                <input asp-for="Price_Product" class="form-input" type="number" min="0" step="0.01" required />
+                <span asp-validation-for="Price_Product" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description_Product" class="form-label">Descriere:</label>
+                <textarea asp-for="Description_Product" class="form-textarea" rows="3" required></textarea>
+                <span asp-validation-for="Description_Product" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image_Product" class="form-label">Imagine produs (URL):</label>
+                <input asp-for="Image_Product" class="form-input" placeholder="https://..." required />
+                <span asp-validation-for="Image_Product" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Id_Categories" class="form-label">Categorie:</label>
+                <select asp-for="Id_Categories" class="form-input" asp-items="ViewBag.Id_Categories" required>
+                    <option value="">-- Selectează o categorie --</option>
+                </select>
+                <span asp-validation-for="Id_Categories" class="text-danger small"></span>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-success">Adaugă produs</button>
+                <a asp-action="Index" class="btn btn-secondary">Înapoi la listă</a>
+            </div>
+        </form>
+    </section>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+
+</body>
+</html>

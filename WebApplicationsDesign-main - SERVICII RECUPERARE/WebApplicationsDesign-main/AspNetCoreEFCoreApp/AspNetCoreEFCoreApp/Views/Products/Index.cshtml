@@ -1,0 +1,176 @@
+﻿@model IEnumerable<AspNetCoreEFCoreApp.Models.Products>
+
+@{
+    ViewData["Title"] = "Lista Produse";
+}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .top-actions {
+            margin: 20px;
+            text-align: right;
+        }
+
+            .top-actions a {
+                background-color: #28a745;
+                color: white;
+                padding: 10px 16px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                .top-actions a:hover {
+                    background-color: #218838;
+                }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 16px;
+            text-align: center;
+        }
+
+            .product-card img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                margin: 0 auto 10px auto;
+                border-radius: 8px;
+                display: block;
+            }
+
+
+        .product-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+            .product-info h4 {
+                margin: 10px 0 5px;
+                font-size: 18px;
+                color: #333;
+            }
+
+            .product-info p {
+                font-size: 14px;
+                color: #555;
+                margin: 4px 0;
+            }
+
+            .product-info .price {
+                font-weight: bold;
+                color: #28a745;
+            }
+
+            .product-info .category {
+                font-size: 13px;
+                color: #777;
+            }
+
+        .card-actions {
+            margin-top: auto;
+            padding-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+        }
+
+            .card-actions a {
+                text-decoration: none;
+                font-size: 13px;
+                padding: 6px 10px;
+                border-radius: 4px;
+                font-weight: 600;
+                transition: background-color 0.3s ease;
+            }
+
+        .edit-btn {
+            background-color: #ffc107;
+            color: white;
+        }
+
+        .details-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background-color: #e0a800;
+        }
+
+        .details-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-actions">
+        <a asp-action="Create">➕ Adaugă produs nou</a>
+    </div>
+
+    <div class="product-grid">
+        @foreach (var item in Model)
+        {
+            var isExternal = !string.IsNullOrEmpty(item.Image_Product) && item.Image_Product.StartsWith("http");
+            var imageUrl = isExternal
+            ? item.Image_Product
+            : Url.Content("~/images/" + item.Image_Product);
+
+            <div class="product-card">
+                <img src="@imageUrl" alt="Imagine produs" />
+                <div class="product-info">
+                    <h4>@item.Name_Product</h4>
+                    <p class="price">@item.Price_Product RON</p>
+                    <p>@item.Description_Product</p>
+                    <p class="category">@item.Id_Categories - @item.Categories?.Name_Categories</p>
+                </div>
+                <div class="card-actions">
+                    <a asp-action="Edit" asp-route-id="@item.Id_Product" class="edit-btn">✏️</a>
+                    <a asp-action="Details" asp-route-id="@item.Id_Product" class="details-btn">🔍</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id_Product" class="delete-btn">🗑️</a>
+                </div>
+            </div>
+        }
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿@model AspNetCoreEFCoreApp.Models.Feedback
+
+@{
+    ViewData["Title"] = "Ștergere Feedback";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .delete-card {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+            .delete-card h3 {
+                color: #dc3545;
+                font-weight: 600;
+            }
+
+        .feedback-info dt {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .feedback-info dd {
+            margin-bottom: 16px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+            .btn-delete:hover {
+                background-color: #c82333;
+            }
+
+        .btn-cancel {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .btn-cancel:hover {
+                background-color: #218838;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="delete-card">
+        <h3>Sigur dorești să ștergi acest feedback?</h3>
+
+        <hr />
+        <dl class="row feedback-info">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Name_Full)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Name_Full)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Photo)
+            </dt>
+            <dd class="col-sm-9 text-break">
+                @Html.DisplayFor(model => model.Photo)
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Message)
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Message)
+            </dd>
+
+            <dt class="col-sm-3">
+                CNP Client
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Users.CNP)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id_Feedback" />
+            <div class="action-buttons">
+                <input type="submit" value="🗑️ Șterge" class="btn-delete" />
+                <a asp-action="Index" class="btn-cancel">↩️ Înapoi la listă</a>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

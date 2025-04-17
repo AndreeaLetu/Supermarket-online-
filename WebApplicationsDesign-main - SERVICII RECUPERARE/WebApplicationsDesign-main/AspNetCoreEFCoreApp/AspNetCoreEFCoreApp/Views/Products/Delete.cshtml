@@ -1,0 +1,45 @@
+﻿@model AspNetCoreEFCoreApp.Models.Products
+
+@{
+    ViewData["Title"] = "Ștergere produs";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+<div class="container mt-5">
+
+    <div class="card shadow-sm border-danger">
+        <div class="card-header bg-danger text-white">
+            <h3>🗑️ Confirmare ștergere produs</h3>
+        </div>
+        <div class="card-body">
+
+            <p class="text-danger fw-bold">Ești sigur că vrei să ștergi acest produs?</p>
+
+            <dl class="row mb-4">
+                <dt class="col-sm-4 fw-bold text-secondary">@Html.DisplayNameFor(model => model.Name_Product):</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Name_Product)</dd>
+
+                <dt class="col-sm-4 fw-bold text-secondary">@Html.DisplayNameFor(model => model.Price_Product):</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Price_Product) RON</dd>
+
+                <dt class="col-sm-4 fw-bold text-secondary">@Html.DisplayNameFor(model => model.Image_Product):</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Image_Product)</dd>
+
+                <dt class="col-sm-4 fw-bold text-secondary">@Html.DisplayNameFor(model => model.Description_Product):</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Description_Product)</dd>
+
+                <dt class="col-sm-4 fw-bold text-secondary">@Html.DisplayNameFor(model => model.Categories):</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Categories.Name_Categories)</dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id_Product" />
+                <button type="submit" class="btn btn-danger me-2">✅ Șterge produsul</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">↩️ Înapoi la listă</a>
+            </form>
+
+        </div>
+    </div>
+
+</div>

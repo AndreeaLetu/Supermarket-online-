@@ -1,0 +1,124 @@
+﻿@model IEnumerable<AspNetCoreEFCoreApp.Models.Contact>
+
+@{
+    ViewData["Title"] = "Mesaje Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background-color: #f6fff9;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .contact-container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 30px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #198754;
+        margin-bottom: 30px;
+    }
+
+    .table-custom {
+        width: 100%;
+        border-collapse: collapse;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+        .table-custom thead {
+            background-color: #198754;
+            color: white;
+        }
+
+        .table-custom th, .table-custom td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table-custom tr:nth-child(even) {
+            background-color: #f2fef5;
+        }
+
+        .table-custom tr:hover {
+            background-color: #e6fff1;
+        }
+
+    .btn-action {
+        margin-right: 8px;
+        padding: 6px 12px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .btn-edit {
+        background-color: #ffc107;
+        color: white;
+    }
+
+    .btn-details {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-add {
+        background-color: #198754;
+        color: white;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+        .btn-add:hover {
+            background-color: #146c43;
+        }
+</style>
+
+<div class="contact-container">
+    <h1>Mesaje primite prin formularul de contact</h1>
+
+    <p>
+        <a asp-action="Create" class="btn-add">➕ Adaugă manual un contact</a>
+    </p>
+
+    <table class="table-custom">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>@Html.DisplayNameFor(model => model.Subject)</th>
+                <th>@Html.DisplayNameFor(model => model.Message)</th>
+                <th>Acțiuni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>@item.Subject</td>
+                    <td>@item.Message</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn-action btn-edit">✏️ Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn-action btn-details">🔍 Detalii</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn-action btn-delete">🗑️ Șterge</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

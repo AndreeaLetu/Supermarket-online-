@@ -1,0 +1,182 @@
+﻿@model AspNetCoreEFCoreApp.Models.Feedback
+@{
+    ViewData["Title"] = "Feedback SuperMarket Craiova";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var feedbacks = ViewBag.FeedbackList as List<AspNetCoreEFCoreApp.Models.Feedback>;
+}
+
+<link rel="stylesheet" href="~/css/feedback.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<script src="https://kit.fontawesome.com/5471644867.js" crossorigin="anonymous"></script>
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+
+<a asp-controller="Feedback" asp-action="Index"
+   class="btn btn-outline-success"
+   style="font-weight: bold; padding: 8px 14px; border-radius: 8px;">
+    🛠️ Gestionare Feedback-uri
+</a> 
+<section id="clients">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <div class="client-heading">
+            <h3>Feedback de la clienții noștri</h3>
+        </div>
+        
+    </div>
+
+    <div class="client-box-container" id="feedback-container">
+        @foreach (var f in feedbacks)
+        {
+            <div class="client-box">
+                <div class="client-profile">
+                    <img alt="client" src="@f.Photo" />
+                    <div class="profile-text">
+                        <strong>@f.Name_Full</strong>
+                    </div>
+                </div>
+                <p>@f.Message</p>
+            </div>
+        }
+    </div>
+</section>
+
+
+    <!-- ✅ Săgeți navigare -->
+    <div class="slider-controls">
+        <button onclick="slidePrev()">←</button>
+        <button onclick="slideNext()">→</button>
+    </div>
+</section>
+
+
+
+<div class="feedback-container">
+    <button class="feedback-button" onclick="openPopup()">Lasă un Feedback</button>
+</div>
+
+<!-- Popup Feedback Form -->
+<div class="overlay" id="overlay" onclick="closePopup()"></div>
+<div class="popup" id="popup">
+    <h3>Lasă un Feedback</h3>
+
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <label asp-for="Name_Full">Numele tău:</label>
+        <input asp-for="Name_Full" class="form-control" placeholder="Nume complet" />
+        <span asp-validation-for="Name_Full" class="text-danger"></span>
+
+        <label asp-for="Photo">Poză (URL):</label>
+        <input asp-for="Photo" class="form-control" placeholder="https://link.jpg" />
+        <span asp-validation-for="Photo" class="text-danger"></span>
+
+        <label asp-for="Message">Mesaj:</label>
+        <textarea asp-for="Message" class="form-control" placeholder="Scrie ceva frumos..." rows="3"></textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
+
+        <label asp-for="CNP">CNP:</label>
+        <select asp-for="CNP" class="form-control" asp-items="ViewBag.CNP">
+            <option value="">-- Selectează client --</option>
+        </select>
+        <span asp-validation-for="CNP" class="text-danger"></span>
+
+        <div class="form-buttons mt-3">
+            <button type="submit" class="btn btn-success">Trimite</button>
+            <button type="button" class="btn btn-secondary" onclick="closePopup()">Închide</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function openPopup() {
+        document.getElementById('popup').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
+<script>
+    let currentIndex = 0;
+
+    function moveCarousel(direction) {
+        const track = document.getElementById('carouselTrack');
+        const items = document.querySelectorAll('.client-box');
+        const itemsPerView = 3;
+        const totalItems = items.length;
+        const totalViews = Math.ceil(totalItems / itemsPerView);
+
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = 0;
+        if (currentIndex >= totalViews) currentIndex = totalViews - 1;
+
+        const offset = currentIndex * -100;
+        track.style.transform = `translateX(${offset}%)`;
+    }
+</script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+    });
+</script>
+
+<script>
+    let currentPage = 0;
+    const perPage = 3;
+
+    function updateFeedbackView() {
+        const boxes = document.querySelectorAll(".client-box");
+        boxes.forEach((box, i) => {
+            box.style.display = (i >= currentPage * perPage && i < (currentPage + 1) * perPage) ? "block" : "none";
+        });
+    }
+
+    function slideNext() {
+        const boxes = document.querySelectorAll(".client-box");
+        if ((currentPage + 1) * perPage < boxes.length) {
+            currentPage++;
+            updateFeedbackView();
+        }
+    }
+
+    function slidePrev() {
+        if (currentPage > 0) {
+            currentPage--;
+            updateFeedbackView();
+        }
+    }
+
+    window.onload = updateFeedbackView;
+</script>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

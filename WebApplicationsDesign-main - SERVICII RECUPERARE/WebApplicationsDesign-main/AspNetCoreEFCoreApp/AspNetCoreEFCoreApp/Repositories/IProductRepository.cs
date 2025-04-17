@@ -1,0 +1,14 @@
+﻿using AspNetCoreEFCoreApp.Models;
+using System.Collections.Generic;
+
+namespace AspNetCoreEFCoreApp.Repositories
+{
+    public interface IProductRepository
+    {
+        IEnumerable<Products> GetAll();
+        Products GetById(int id);
+        void Add(Products product);
+        void Update(Products product);
+        void Delete(int id);
+    }
+}
