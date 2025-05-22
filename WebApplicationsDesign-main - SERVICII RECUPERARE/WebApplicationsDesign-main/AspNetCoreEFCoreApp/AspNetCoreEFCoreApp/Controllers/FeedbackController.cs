@@ -13,7 +13,7 @@ namespace AspNetCoreEFCoreApp.Controllers
         public FeedbackController(IFeedbackService feedbackService, SupermarketContext context)
         {
             _feedbackService = feedbackService;
-            _context = context;
+            
         }
 
         // GET: Feedback
