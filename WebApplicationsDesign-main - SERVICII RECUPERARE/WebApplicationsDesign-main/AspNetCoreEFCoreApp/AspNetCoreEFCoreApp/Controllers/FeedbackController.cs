@@ -10,7 +10,7 @@ namespace AspNetCoreEFCoreApp.Controllers
         private readonly IFeedbackService _feedbackService;
         private readonly SupermarketContext _context;
 
-        public FeedbackController(IFeedbackService feedbackService, SupermarketContext context)
+        public FeedbackController(IFeedbackService feedbackService)
         {
             _feedbackService = feedbackService;
             
